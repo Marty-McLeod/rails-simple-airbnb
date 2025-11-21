@@ -63,3 +63,5 @@ group :test do
   gem "selenium-webdriver"
 end
 gem "faker"
+gem 'rspec-rails', group: [ :test ]
+gem 'rails-controller-testing', group: [ :test ]

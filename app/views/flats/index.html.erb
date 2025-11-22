@@ -1,0 +1,37 @@
+<div class="container">
+    <!-- add if/else clause for search results returned (handled in action #index in controller) -->
+    <h1 class="mt-3">All my flats (<%= @flats.count %>)</h1>
+    <% if @query %>
+        <p class="fw-medium"><%= @flats.count %> results found similar to "<%= @query %>"</p>
+    <% end %>
+    <div class="row mt-3 gap-3">
+
+        <% @flats.each_with_index do |flat, index| %>
+
+            <div class="card col-md-3 col-sm-10 p-0 shadow-sm">
+                <img class="card-img-top" style="height: 180px;" src=<%= flat.image_url %>/>
+                <div class="card-body bg-light">
+                    <div style="height: 10em;">
+                        <h4><%= flat.name %></h4>
+                        <p><%= flat.address %></p>
+                        <p class="fst-italic"><%= flat.description.truncate(78) %></p>
+                    </div>
+                    <div class="border-bottom pb-2">
+                        <i class="fa-solid fa-people-group fa-sm"> <%= flat.number_of_guests %></i>
+                        <i class="fa-solid fa-euro-sign fa-sm"> <%= flat.price_per_night %></i>
+                    </div>
+                    <div class="d-flex mb-0 mt-3">
+                        <p class="me-3"><%= link_to "More info", flat_path(flat.id), class: "" %></p>
+                        <p class="me-3"><%= link_to "Edit", edit_flat_path(flat.id), class: "text-warning" %></p>
+                        <p class="me-3"><%= link_to "Remove", flat_path(flat), 
+                            data: { turbo_method: :delete, turbo_confirm: "Delete listing?" }, class: "text-danger" %></p>
+                    </div>
+                </div>
+            </div>
+
+        <% end %>
+    </div>
+
+</div>
+
+<%# app/views/flats/index.html.erb %>

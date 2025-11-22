@@ -1,0 +1,18 @@
+<div class="container">
+
+    <div class="col-5 mx-auto bg-light m-3 p-3">
+        <h1 class="mt-3">Flat details</h1>
+
+        <%= simple_form_for @flat do |f|  %>
+            <%= f.input :name %>
+            <%= f.input :address %>
+            <%= f.input :description %>
+            <%= f.input :number_of_guests %>
+            <%= f.input :price_per_night %>
+            <%= f.input :image_url %>
+            <%= link_to "<- All flats", flats_path, class: "text-decoration-none" %>
+        <% end %>
+        
+    </div>
+
+</div>
